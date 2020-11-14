@@ -1,0 +1,17 @@
+{
+    "name": "maikl/database-pdo",
+    "authors": [
+        {
+            "name": "Abasov Maikl",
+            "email": "abasov.m@basis-plus.ru"
+        }
+    ],
+    "require": {},
+	
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+    
+}
