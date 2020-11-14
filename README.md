@@ -1,35 +1,58 @@
 # Database
 
+use App\Database;
 
-$pdo = Database::getInstance($config);
+$config = [
+    'host'     => 'localhost',
+    'database' => 'faximile',
+    'user'     => 'w1user',
+    'password' => 'w1password',
+    'driver'   => 'pgsql',
+    'port'     => 5432,
+];
+
+
+$db = Database::getInstance($config);
 
 $table = 'desktop_list';
 
-$results = $pdo->select($table, [], '*', ' LIMIT 2')->result();
+///////////////////////////
+//  получить список
+$results = $db->select($table, [], '*', ' LIMIT 2')->result();
 
+///////////////////////////
+//  получить одну запись
 $where = ['id = ?', [16] ];
-// $user    = $pdo->select($table, $where)->one();
-var_export($results); die;
+$user  = $db->select($table, $where)->one();
+// var_export($results); die;
 
-$data = array (
+///////////////////////////
+//  добавить новую запись
+$data = [
     'title'   => 'Рабочий стол 8',
     'vidgets' => 'rrr',
     'note'    => 'rrrr',
     'name'    => 'rrr',
-);
+];
 
-//$r = $pdo->insert($table, $data);
-//var_dump($r);
+$r = $db->insert($table, $data);
+var_export($r);
 
-$data = array (
+
+///////////////////////////
+//  изменить запись
+$data = [
     'name'    => 'ertyuuuuuu',
-);
-
+];
 $where = ['id', 16];
+$r = $db->update($table, $data, $where);
+var_export($db);
 
-$r = $pdo->update($table, $data, $where);
-var_export($pdo);
 
+///////////////////////////
+//  удалить запись
 $where = ['id = ?', [17] ];
-//$r = $pdo->delete($table, $where);
-//var_export($r);
+$r = $db->delete($table, $where);
+var_export($r);
+
+
