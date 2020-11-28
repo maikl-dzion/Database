@@ -121,6 +121,24 @@ class DatabaseClass implements DatabaseInterface {
             return $result;
         }
 
+        public function select($data, $tableName) {
+
+		    $where = $values = [];
+		    foreach ($data as $fname => $value) {
+                $where[] = "{$fname} = ?";
+                $values[] = $value;
+            }
+
+            if(!empty($where) && !empty($values)) {
+                $whereLine = implode(' AND ', $where);
+                $this->query = "SELECT * FROM {$tableName} WHERE {$whereLine}";
+                $this->data = $values;
+            }
+
+            dd($this);
+        }
+
+
         protected function make(string $query = '', array $data = []) {
 
 		    if(!$query && empty($data)) {
