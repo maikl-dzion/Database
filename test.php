@@ -1,10 +1,7 @@
 <?php
 
-
 require 'DatabaseInterface.php';
 require 'DatabaseClass.php';
-
-
 
 $config = [
     'host'     => 'bolderp5.beget.tech',
@@ -15,7 +12,6 @@ $config = [
     'driver'   => 'mysql',
     'port'     => false,
 ];
-
 
 
 $db = new DatabaseClass($config);
