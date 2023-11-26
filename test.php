@@ -36,9 +36,9 @@ $data = [
 
 $table = 'basicrefbook';
 
-dd($response);
+lg($response);
 
-function dd()
+function lg()
 {
 
     $out = '';
